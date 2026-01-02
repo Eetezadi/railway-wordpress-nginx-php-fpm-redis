@@ -33,15 +33,31 @@ echo "Initializing WordPress..."
 # The original WordPress entrypoint at /usr/local/bin/docker-entrypoint.sh handles file setup
 docker-entrypoint.sh php-fpm -t
 
-# 5. Fix permissions
+# 5. Inject custom wp-config.php modifications for dynamic domain handling
+if [ -f /var/www/html/wp-config.php ]; then
+    echo "Injecting dynamic domain configuration into wp-config.php..."
+    # Check if our custom config is already injected
+    if ! grep -q "wp-config-custom.php" /var/www/html/wp-config.php; then
+        # Insert our custom config at the beginning of wp-config.php (after <?php)
+        sed -i "2i\\
+// Dynamic domain configuration - injected by Railway\\
+require_once('/usr/local/share/wp-config-custom.php');\\
+" /var/www/html/wp-config.php
+        echo "Dynamic domain configuration injected successfully."
+    else
+        echo "Dynamic domain configuration already present."
+    fi
+fi
+
+# 6. Fix permissions
 chown -R www-data:www-data /var/www/html
 
-# 6. Start Nginx (background, but not daemon mode for proper signal handling)
+# 7. Start Nginx (background, but not daemon mode for proper signal handling)
 echo "Starting Nginx..."
 nginx -g "daemon off;" &
 NGINX_PID=$!
 
-# 7. Start PHP-FPM (foreground)
+# 8. Start PHP-FPM (foreground)
 echo "Starting PHP-FPM..."
 php-fpm &
 PHP_FPM_PID=$!

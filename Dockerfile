@@ -37,6 +37,7 @@ RUN echo "pm.status_path = /status" >> /usr/local/etc/php-fpm.d/zz-docker.conf
 RUN sed -i 's/listen = .*/listen = 127.0.0.1:9000/' /usr/local/etc/php-fpm.d/zz-docker.conf
 
 COPY default.conf.template /etc/nginx/templates/default.conf.template
+COPY wp-config-custom.php /usr/local/share/wp-config-custom.php
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint-custom.sh
 RUN chmod +x /usr/local/bin/docker-entrypoint-custom.sh
 

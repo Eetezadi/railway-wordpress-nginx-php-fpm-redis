@@ -11,6 +11,7 @@ Production WordPress stack optimized for performance and security.
 - ⚡ **Performance Optimized**: Nginx web server with PHP-FPM 8.3, Redis object caching for database query reduction, and optimized PHP configuration
 - 🗄️ **Managed Databases**: Railway's standard MySQL database with phpMyAdmin web interface for easy administration
 - 📦 **Redis Integration**: Built-in Redis support for persistent object caching and session storage
+- 🌐 **Multi-Domain Ready**: Dynamic domain detection automatically handles Railway domains and custom domains without manual configuration
 - 🛠️ **WP-CLI Ready**: Pre-installed WordPress command-line tools for advanced site management
 
 ## Common Use Cases
@@ -39,6 +40,15 @@ That's it! Redis object caching is now active and will significantly improve you
 
 ### phpMyAdmin Access
 phpMyAdmin is deployed as a separate service on Railway. Access it to connect to your MySQL database for a web-based database management interface.
+
+### Adding Custom Domains
+This template includes automatic dynamic domain detection, allowing you to add multiple Railway domains or custom domains without any manual configuration:
+
+1. Add your custom domain in Railway's service settings
+2. Point your domain's DNS to Railway (Railway will provide the DNS settings)
+3. Your WordPress site will automatically work with the new domain
+
+**No database updates or wp-config.php changes required!** The container automatically detects and adapts to any domain you use.
 
 ### Optional Performance Tuning
 If you want to customize performance settings, you can optionally set these environment variables:
