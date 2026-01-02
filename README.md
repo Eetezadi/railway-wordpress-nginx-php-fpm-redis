@@ -29,12 +29,11 @@ After deploying the template, there is **only one step** required to enable Redi
 ### Install and Enable Redis Object Cache Plugin
 
 1. Log into your WordPress admin dashboard
-2. Navigate to **Plugins** → **Add New**
+2. Navigate to **Plugins** → **Add Plugin**
 3. Search for **"Redis Object Cache"** (by Till Krüss)
 4. Click **Install Now**, then **Activate**
-5. Navigate to **Settings** → **Redis**
-6. Click **"Enable Object Cache"**
-7. Verify the connection status shows **"Connected"**
+5. Click **"Enable Object Cache"**
+6. Verify the connection status shows **"Connected"**
 
 That's it! Redis object caching is now active and will significantly improve your site's performance by caching database queries.
 
