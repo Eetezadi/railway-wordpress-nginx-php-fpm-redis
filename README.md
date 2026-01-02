@@ -38,17 +38,21 @@ After deploying the template, there is **only one step** required to enable Redi
 
 That's it! Redis object caching is now active and will significantly improve your site's performance by caching database queries.
 
+### Adding Domains
+
+The container automatically adapts to any domain you add. No database updates or wp-config.php changes required. To add a domain to your WordPress service:
+
+1. Navigate to your WordPress service in Railway
+2. Go to **Settings** → **Networking** → **Public Networking**
+3. Click **Custom Domain** and enter your domain (e.g., `yourdomain.com`)
+4. **Port**: Use **80** (Railway handles SSL automatically)
+5. Point your domain's DNS to the provided Railway address
+6. Wait for SSL certificate provisioning (usually 1-2 minutes)
+
+
 ### phpMyAdmin Access
 phpMyAdmin is deployed as a separate service on Railway. Access it to connect to your MySQL database for a web-based database management interface.
 
-### Adding Custom Domains
-This template includes automatic dynamic domain detection, allowing you to add multiple Railway domains or custom domains without any manual configuration:
-
-1. Add your custom domain in Railway's service settings
-2. Point your domain's DNS to Railway (Railway will provide the DNS settings)
-3. Your WordPress site will automatically work with the new domain
-
-**No database updates or wp-config.php changes required!** The container automatically detects and adapts to any domain you use.
 
 ### Optional Performance Tuning
 If you want to customize performance settings, you can optionally set these environment variables:

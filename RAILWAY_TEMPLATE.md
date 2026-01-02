@@ -28,17 +28,22 @@ Hosting WordPress with Nginx, PHP-FPM, and Redis involves deploying a high-perfo
 
 **Required Post-Deployment Setup**
 
-To enable Redis caching, install and activate the Redis Object Cache plugin in Wordpress:
+1. **Enable Redis Caching**: Install and activate the Redis Object Cache plugin
+   - Log into WordPress admin dashboard
+   - Navigate to **Plugins** → **Add New**
+   - Search for **"Redis Object Cache"** (by Till Krüss)
+   - Click **Install Now**, then **Activate**
+   - Navigate to **Settings** → **Redis** → **Enable Object Cache**
+   - Verify connection status shows **"Connected"**
 
-1. Log into your WordPress admin dashboard
-2. Navigate to **Plugins** → **Add New**
-3. Search for **"Redis Object Cache"** (by Till Krüss)
-4. Click **Install Now**, then **Activate**
-5. Navigate to **Settings** → **Redis**
-6. Click **"Enable Object Cache"**
-7. Verify the connection status shows **"Connected"**
+2. **Configure Custom Domain** (optional):
+   - Go to WordPress service → **Settings** → **Networking** → **Public Networking**
+   - Click **Custom Domain** and enter your domain
+   - **Port**: Use **80** (Railway handles SSL automatically)
+   - Point your domain's DNS to the provided Railway address
+   - Wait 1-2 minutes for SSL certificate provisioning
 
-All environment variables are configured automatically by Railway, so no manual Redis configuration is required.
+All environment variables are configured automatically by Railway. The template includes dynamic domain detection, so WordPress automatically adapts to any domain you add.
 
 The template uses a custom Docker image with the following configuration:
 
