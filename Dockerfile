@@ -23,7 +23,11 @@ COPY nginx.conf /etc/nginx/nginx.conf
 # Install PHP extensions
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd zip opcache
-RUN pecl install redis && docker-php-ext-enable redis
+# Install Redis extension (requires build tools temporarily)
+RUN apk add --no-cache --virtual .build-deps autoconf gcc g++ make \
+    && pecl install redis \
+    && docker-php-ext-enable redis \
+    && apk del .build-deps
 
 # Install WP-CLI
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
