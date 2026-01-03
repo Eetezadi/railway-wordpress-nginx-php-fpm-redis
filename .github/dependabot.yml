@@ -6,6 +6,7 @@ updates:
     schedule:
       interval: "weekly"
       day: "sunday"
+    rebase-strategy: "auto"
     open-pull-requests-limit: 5
     labels:
       - "dependencies"
@@ -13,17 +14,5 @@ updates:
     commit-message:
       prefix: "chore"
       include: "scope"
-
-  # Enable version updates for GitHub Actions (if any are added in the future)
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-    open-pull-requests-limit: 5
-    labels:
-      - "dependencies"
-      - "github-actions"
-    commit-message:
-      prefix: "chore"
-      include: "scope"
+    assignees:
+      - "Eetezadi"
