@@ -1,17 +1,18 @@
-FROM wordpress:php8.3-fpm
+FROM wordpress:6-php8.3-fpm-alpine
 
 # Install dependencies
-RUN apt-get update && apt-get install -y \
+RUN apk add --no-cache \
     nginx \
-    gettext-base \
-    libfreetype6-dev \
-    libjpeg62-turbo-dev \
+    gettext \
+    freetype-dev \
+    libjpeg-turbo-dev \
     libpng-dev \
     libzip-dev \
     unzip \
     wget \
-    libfcgi-bin \
-    && rm -rf /var/lib/apt/lists/*
+    curl \
+    fcgi \
+    bash
 
 # Remove ALL default nginx configs
 RUN rm -rf /etc/nginx/sites-enabled /etc/nginx/sites-available /etc/nginx/conf.d/default.conf
@@ -22,7 +23,11 @@ COPY nginx.conf /etc/nginx/nginx.conf
 # Install PHP extensions
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd zip opcache
-RUN pecl install redis && docker-php-ext-enable redis
+# Install Redis extension (requires build tools temporarily)
+RUN apk add --no-cache --virtual .build-deps autoconf gcc g++ make \
+    && pecl install redis \
+    && docker-php-ext-enable redis \
+    && apk del .build-deps
 
 # Install WP-CLI
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
