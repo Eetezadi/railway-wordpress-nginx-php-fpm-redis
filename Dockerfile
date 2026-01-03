@@ -1,17 +1,18 @@
-FROM wordpress:php8.3-fpm
+FROM wordpress:6-php8.3-fpm-alpine
 
 # Install dependencies
-RUN apt-get update && apt-get install -y \
+RUN apk add --no-cache \
     nginx \
-    gettext-base \
-    libfreetype6-dev \
-    libjpeg62-turbo-dev \
+    gettext \
+    freetype-dev \
+    libjpeg-turbo-dev \
     libpng-dev \
     libzip-dev \
     unzip \
     wget \
-    libfcgi-bin \
-    && rm -rf /var/lib/apt/lists/*
+    curl \
+    fcgi \
+    bash
 
 # Remove ALL default nginx configs
 RUN rm -rf /etc/nginx/sites-enabled /etc/nginx/sites-available /etc/nginx/conf.d/default.conf
