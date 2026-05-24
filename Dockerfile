@@ -1,4 +1,4 @@
-FROM wordpress:6-php8.3-fpm-alpine
+FROM wordpress:7-php8.3-fpm-alpine
 
 # Install dependencies
 RUN apk add --no-cache \
