@@ -8,9 +8,6 @@ updates:
       day: "sunday"
     rebase-strategy: "auto"
     open-pull-requests-limit: 5
-    labels:
-      - "dependencies"
-      - "docker"
     commit-message:
       prefix: "chore"
       include: "scope"
