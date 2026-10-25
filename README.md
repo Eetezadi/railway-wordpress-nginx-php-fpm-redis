@@ -2,15 +2,15 @@
 
 [![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/FrpUIu?referralCode=wOLOAa&utm_medium=integration&utm_source=template&utm_campaign=generic)
 
-A production-ready WordPress deployment featuring a security-hardened custom Docker image with Nginx and PHP-FPM 8.3, integrated with Railway's managed MySQL and Redis databases, plus a phpMyAdmin interface for database management.
+A production-ready WordPress deployment featuring a security-hardened custom Docker image with WordPress 7, Nginx and PHP-FPM 8.4, integrated with Railway's managed MySQL and Redis databases, plus a phpMyAdmin interface for database management.
 
 ## About Hosting WordPress Nginx PHP-FPM Redis on Railway
 Production WordPress stack optimized for performance and security.
 
 - 🔒 **Security Hardened**: Custom Docker image with XML-RPC disabled, protected wp-config.php, upload directory PHP execution blocking, security headers, and hidden file protection
-- ⚡ **Performance Optimized**: Nginx web server with PHP-FPM 8.3, Redis object caching for database query reduction, and optimized PHP configuration
+- ⚡ **Performance Optimized**: Nginx web server with PHP-FPM 8.4, Redis object caching for database query reduction, and optimized PHP configuration
 - 🗄️ **Managed Databases**: Railway's standard MySQL database with phpMyAdmin web interface for easy administration
-- 📦 **Redis Integration**: Built-in Redis support for persistent object caching and session storage
+- 📦 **Redis Integration**: Built-in Redis support for persistent object caching
 - 🌐 **Multi-Domain Ready**: Dynamic domain detection automatically handles Railway domains and custom domains without manual configuration
 - 🛠️ **WP-CLI Ready**: Pre-installed WordPress command-line tools for advanced site management
 
@@ -68,9 +68,9 @@ If you want to customize performance settings, you can optionally set these envi
 The template uses a custom Docker image with security hardening and production optimizations:
 
 - **Nginx Configuration**: Optimized for WordPress with security rules blocking common attack vectors
-- **PHP-FPM 8.3**: Latest stable PHP version with performance enhancements
+- **PHP-FPM 8.4**: Modern PHP version with performance enhancements
 - **Persistent Storage**: Volume mounted at `/var/www/html` for WordPress files
-- **WP-CLI**: Pre-installed for command-line management (`wp plugin list`, `wp cache flush`, etc.)
+- **WP-CLI**: Pre-installed for command-line management (`wp plugin list --allow-root`, `wp cache flush --allow-root`, etc.)
 - **Security Layers**: XML-RPC disabled, wp-config.php access blocked, PHP execution prevented in uploads directory
 - **Redis Integration**: Automatic connection to Railway Redis with password authentication
 
