@@ -1,8 +1,8 @@
-# Deploy and Host WordPress Nginx PHP-FPM Redis on Railway
+# Deploy and Host WordPress 7 Nginx PHP-FPM Redis on Railway
 
 A production-ready WordPress deployment featuring a security-hardened custom Docker image with WordPress 7, Nginx and PHP-FPM 8.4, integrated with Railway's managed MySQL and Redis databases, plus a phpMyAdmin interface for database management.
 
-## About Hosting WordPress Nginx PHP-FPM Redis
+## About Hosting WordPress 7 Nginx PHP-FPM Redis
 
 Hosting WordPress with Nginx, PHP-FPM, and Redis involves deploying a high-performance web stack optimized for production environments. This configuration uses Nginx as the web server for efficient request handling, PHP-FPM 8.4 for processing PHP code, and Redis for persistent object caching. The setup includes security hardening measures such as XML-RPC disabling, protected wp-config.php, upload directory PHP execution blocking, and security headers. Railway's managed MySQL database handles persistent data storage, while phpMyAdmin provides a web-based interface for database administration. WP-CLI is pre-installed for advanced command-line site management.
 
@@ -80,7 +80,7 @@ wp user list --allow-root
 - Volume mounted at `/var/www/html` for WordPress files
 - Ensures uploads and plugins persist across deployments
 
-## Why Deploy WordPress Nginx PHP-FPM Redis on Railway?
+## Why Deploy WordPress 7 Nginx PHP-FPM Redis on Railway?
 
 Railway is a singular platform to deploy your infrastructure stack. Railway will host your infrastructure so you don't have to deal with configuration, while allowing you to vertically and horizontally scale it.
 
